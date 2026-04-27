@@ -15,7 +15,7 @@ The tests cover CRUD operations for the /posts endpoint and are implemented usin
 ApiTests/
 
  - Clients/ (API client wrapper (ApiClient, ApiResponse))
- -  Models/( Request/response models)
+ - Models/( Request/response models)
  - Tests/ (Test cases)
  - Utils/ (Logging and configuration (ApiLogger, AppSettings))
 
@@ -32,39 +32,53 @@ Restore dependencies: dotnet restore
 
 Run tests: dotnet test
 
+## Continuous Integration (CI)
+
+This project uses GitHub Actions for continuous integration.
+
+The workflow is triggered automatically on each push to the main branch and performs:
+
+- Restore dependencies
+- Build the solution
+- Run all automated tests
+
+Workflow configuration is located at:
+.github/workflows/dotnet-tests.yml
+
 ## Test Scenarios
 
 1) GET /posts
-Verify response status is 200 OK
-Verify total number of posts is 100
-Validate post structure (id, userId, title, body)
+- Verify response status is 200 OK
+- Verify total number of posts is 100
+- Validate post structure (id, userId, title, body)
 
 2) GET /posts/{id}
-Verify fetching a specific post by ID
-Verify handling of non-existent post
-Note: the API returns 200 OK with an empty body {} instead of 404 NotFound
+- Verify fetching a specific post by ID
+- Verify handling of non-existent post
+- Note: the API returns 200 OK with an empty body {} instead of 404 NotFound
 
 3) POST /posts
-Verify response status is 201 Created
-Verify response body contains submitted data
+- Verify response status is 201 Created
+- Verify response body contains submitted data
 
 4) PUT /posts/{id}
-Verify updating an existing post
-Validate updated fields in response
+- Verify updating an existing post
+- Validate updated fields in response
 
 5) DELETE /posts/{id}
-Verify response status is 200 OK
-Verify response body is empty or {}
+- Verify response status is 200 OK
+- Verify response body is empty or {}
 
 ## Framework Design
 
 The project follows a simple layered structure:
 
 - ApiClient - handles all HTTP requests, serialization, and logging
-- BaseTest – shared setup for tests
-- ApiLogger – centralized request/response logging
+- ApiResponse – wrapper for HTTP responses, containing deserialized data and status code
 - Models – strongly typed request and response objects
+- ApiLogger – centralized request/response logging
 - AppSettings – configuration for base URL
+- BaseTest – shared setup for tests
 
 ## Logging
 
