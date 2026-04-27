@@ -6,9 +6,20 @@ https://jsonplaceholder.typicode.com
 
 The tests cover CRUD operations for the /posts endpoint and are implemented using:
 
-- .NET 8
+- .NET 10
 - NUnit
 - HttpClient
+
+## Setup
+1) Prerequisites
+Make sure you have installed:
+- .NET 10 SDK
+
+2) Restore dependencies
+dotnet restore ApiTests.sln
+
+3) Run all tests from the root folder
+dotnet test ApiTests.sln
 
 ## Project Structure
 
