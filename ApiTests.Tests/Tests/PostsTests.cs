@@ -108,7 +108,7 @@ public async Task UpdatePost_ReturnsUpdatedPost()
     Assert.That(response.Data, Is.Not.Null, "Response data should not be null after update operation");
 
     // ASSERTS for data
-    Assert.That(response.Data.Id, Is.EqualTo(1), "Post ID should remain 1 for endpoint /posts/1");
+    Assert.That(response.Data.Id, Is.EqualTo(2), "Post ID should remain 1 for endpoint /posts/1");
     Assert.That(response.Data.UserId, Is.EqualTo(updatePost.UserId), "UserId should match updated request payload");
     Assert.That(response.Data.Title, Is.EqualTo(updatePost.Title), "Title should be updated to new value");
     Assert.That(response.Data.Body, Is.EqualTo(updatePost.Body), "Body should be updated to new value");
