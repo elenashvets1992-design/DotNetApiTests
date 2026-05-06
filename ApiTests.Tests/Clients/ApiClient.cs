@@ -29,7 +29,7 @@ public class ApiClient
         return JsonSerializer.Deserialize<T>(json)!;
     }
   
-// GET negative
+// GET negative 
     public async Task<HttpResponseMessage> GetRawAsync(string endpoint)
     {
         var response = await _httpClient.GetAsync(endpoint);
